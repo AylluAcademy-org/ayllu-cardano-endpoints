@@ -2,6 +2,12 @@ import { IoTDataPlaneClient, PublishCommand, PublishCommandInput } from "@aws-sd
 import { getEnvVars } from "../utils";
 import { getAwsCredentials } from "./index";
 
+/**
+ * Gets an IoT client capable of querying data.
+ * 
+ * @returns - An instance of the client.
+ */
+
 export function getIotClient() {
     try {
         const iotEndpoint: string = getEnvVars('AWS_IOT_ENDPOINT')[0];
@@ -11,6 +17,13 @@ export function getIotClient() {
         console.log(`It was not possible to create an IoT Client.\n${e}`)
     }
 };
+
+/**
+ * Formats a given value into a valid query for the IoT Client.
+ * 
+ * @param inputValue - An Uint8Array that will be the payload for the request.
+ * @returns - A formatted object with the specific type to be requested by the IoT Client.
+ */
 
 export function formatCommands(inputValue: Uint8Array) {
     const iotTopic: string = getEnvVars("AWS_TOPIC")[0];
