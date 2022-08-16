@@ -1,3 +1,5 @@
+import fs from "fs";
+
 function validateEnvValues ( inputValue: string, isStrict: boolean ): string {
     let toOutput = inputValue !== undefined ? inputValue : "";
     if (toOutput === "" && isStrict === true) {
@@ -32,3 +34,13 @@ export function getEnvVars( inputKey: string | string[], strict?: boolean ): str
     
     return output;
 }
+
+export function getJsonVars ( inputKey: string ) {
+    try {
+        const rootPath = require("app-root-path").path;
+        const data = fs.readFileSync(`${rootPath}/${inputKey}`)
+        return JSON.parse(data as any);
+    } catch (e) {
+        console.error(e);
+    }
+};
