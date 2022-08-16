@@ -13,4 +13,3 @@ export function getAwsCredentials() {
 
 
 export * from "./iot";
-export * from "./lambda";
