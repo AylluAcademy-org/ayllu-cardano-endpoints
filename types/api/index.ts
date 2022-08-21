@@ -25,5 +25,5 @@ export const validMessage = z.object({
 export const iotMessage = z.object({
     message_id: z.string(),
     payload: validMessage,
-    timestamp: z.date()
+    timestamp: z.optional(z.date())
 });
