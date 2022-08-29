@@ -66,7 +66,7 @@ packages:
       '@aws-crypto/sha256-js': 2.0.0
       '@aws-crypto/supports-web-crypto': 2.0.0
       '@aws-crypto/util': 2.0.1
-      '@aws-sdk/types': 3.127.0
+      '@aws-sdk/types': 3.159.0
       '@aws-sdk/util-locate-window': 3.55.0
       '@aws-sdk/util-utf8-browser': 3.109.0
       tslib: 1.14.1
@@ -76,7 +76,7 @@ packages:
     resolution: {integrity: sha512-VZY+mCY4Nmrs5WGfitmNqXzaE873fcIZDu54cbaDaaamsaTOP1DBImV9F4pICc3EHjQXujyE8jig+PFCaew9ig==}
     dependencies:
       '@aws-crypto/util': 2.0.1
-      '@aws-sdk/types': 3.127.0
+      '@aws-sdk/types': 3.159.0
       tslib: 1.14.1
     dev: false
 
@@ -89,7 +89,7 @@ packages:
   /@aws-crypto/util/2.0.1:
     resolution: {integrity: sha512-JJmFFwvbm08lULw4Nm5QOLg8+lAQeC8aCXK5xrtxntYzYXCGfHwUJ4Is3770Q7HmICsXthGQ+ZsDL7C2uH3yBQ==}
     dependencies:
-      '@aws-sdk/types': 3.127.0
+      '@aws-sdk/types': 3.159.0
       '@aws-sdk/util-utf8-browser': 3.109.0
       tslib: 1.14.1
     dev: false
@@ -617,6 +617,11 @@ packages:
 
   /@aws-sdk/types/3.127.0:
     resolution: {integrity: sha512-e0wtx2IkOl7rwfKfLH5pPTzQ+d45V7b1WrjeL0WDI8kOu6w+sXmhNxI6uM2kf0k4NiTLN84lW290AEWupey9Og==}
+    engines: {node: '>= 12.0.0'}
+    dev: false
+
+  /@aws-sdk/types/3.159.0:
+    resolution: {integrity: sha512-5xlVaui5sAiBfpP8d/NbQ3xVJBzh8elvbWpiu9ZASujrCg1m1K3Icjl9q40dl1AAszujUsNQg6tB/MY395M0xw==}
     engines: {node: '>= 12.0.0'}
     dev: false
 

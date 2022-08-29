@@ -1,4 +1,7 @@
-import { IoTDataPlaneClient, PublishCommand, PublishCommandInput } from "@aws-sdk/client-iot-data-plane";
+import { IoTDataPlaneClient, 
+    PublishCommand, 
+    PublishCommandInput 
+} from "@aws-sdk/client-iot-data-plane";
 import { getEnvVars } from "../utils";
 import { getAwsCredentials } from "./index";
 
@@ -12,7 +15,11 @@ export function getIotClient() {
     try {
         const iotEndpoint: string = getEnvVars('AWS_IOT_ENDPOINT')[0];
         const iotRegion: string = getEnvVars('AWS_REGION')[0];
-        return new IoTDataPlaneClient({ credentials: getAwsCredentials() , region: iotRegion, endpoint: iotEndpoint });
+        return new IoTDataPlaneClient({ 
+            credentials: getAwsCredentials() , 
+            region: iotRegion, 
+            endpoint: iotEndpoint 
+        });
     } catch (e) {
         console.log(`It was not possible to create an IoT Client.\n${e}`)
     }
@@ -25,10 +32,22 @@ export function getIotClient() {
  * @returns - A formatted object with the specific type to be requested by the IoT Client.
  */
 
-export function formatCommands(inputValue: Uint8Array) {
+export function formatCommands(inputValue: string) {
     const iotTopic: string = getEnvVars("AWS_TOPIC")[0];
+    let prepMessage: number[] = [];
 
-    const params: PublishCommandInput = { payload: inputValue, qos: 1, retain: false, topic: iotTopic }
+    for ( var i=0; i < inputValue.length; i+=2 ) {
+        prepMessage.push(parseInt(inputValue.substring(i, i+2), 16));
+    };
+
+    const messagePayload = Uint8Array.from(prepMessage);
+
+    const params: PublishCommandInput = { 
+        payload: messagePayload, 
+        qos: 1, 
+        retain: false, 
+        topic: iotTopic 
+    }
 
     return new PublishCommand(params);
 }
