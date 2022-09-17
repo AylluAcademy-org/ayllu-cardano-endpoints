@@ -7,6 +7,8 @@ import { formatMessage } from "./formatter";
 
 const app = express();
 
+app.use(express.json());
+
 app.post("broker/messenger", async (req, res) => 
     {
         const iot = getIotClient() as IoTDataPlaneClient;

@@ -50,4 +50,4 @@ export function formatCommands(inputValue: string) {
     }
 
     return new PublishCommand(params);
-}
+};
